@@ -21,7 +21,7 @@ if(!isset($_SESSION['var'])){
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"rel="stylesheet">
     <link rel="stylesheet" href="../css/all.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/all.min.css">
+    
     
     <style>
         .admin_image{
