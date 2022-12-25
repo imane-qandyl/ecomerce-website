@@ -1,4 +1,4 @@
-<?php
+  <?php
 include('./include/connect.php');
 include('./functions/common_function.php');
 ?>
@@ -67,7 +67,7 @@ include('./functions/common_function.php');
     <h3 class="text-center">hidden store</h3>
     <p class="text-center">communication is at the heart of e-commerce and community</p>
 </div>
-<div class="row">
+<div class="row px-1">
     <div class="col-md-10">
 <div class="row">
   <?php
@@ -174,7 +174,9 @@ include('./functions/common_function.php');
     //    </li>";
     // }
     getbrands();
+    get_unique_categories();
     ?>
+    
    </ul>
     <ul class="navbar-nav me-auto text-center">
         <li class="nav-item bg-info">
@@ -198,10 +200,11 @@ include('./functions/common_function.php');
 
     </div>
 </div>
-    </div>
+    
 <div class="bg-info p-3 text-center">
     <p>all rights reseved designed by house-design</p>
 </div>
+    </div>
     <script src="bootstrap/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

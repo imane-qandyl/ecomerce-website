@@ -1,5 +1,12 @@
-
-    <h3 class="text-center text-success">view products</h3>
+<?php
+if(isset($_GET['d'])){
+    include('../include/connect.php');
+    $delete="DELETE FROM product WHERE product_id=".$_GET['id'];
+    $veref=mysqli_query($con,$delete);
+    echo"suprrimer";
+}
+?>
+   <h3 class="text-center text-success">view products</h3>
     <table class="table table-bordered-mt-5">
         <thead class="bg-info">
             <tr>
@@ -25,18 +32,18 @@ $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $status=$row['status'];
 $number++;
-echo "
+?>
 <tr class='text-center'>
-<td>$number</td>
-<td> $product_title</td>
-<td><img src='../product_image/$product_image1' class='product_img'></td>
-<td>$product_price</td>
+<td><?=$number?></td>
+<td> <?=$product_title?></td>
+<td><img src='../product_image/<?=$product_image1?>' class='product_img'></td>
+<td><?=$product_price?></td>
 <td>0</td>
-<td>$status</td>
-<td><a href=''class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
-<td><a href=''class='text-light'><i class='fas fa-edit'></i></a></td>
+<td><?=$status?></td>
+<td><a href="index.php?edit_products=<?=$product_id?>" class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
+<td><a href="index.php?view_products=1&d=1&id=<?=$row['product_id']?>"class='text-light'><i class='fa-solid fa-trash'></i></a></td>
 </tr>
-";
+<?php
 }
             ?>
           

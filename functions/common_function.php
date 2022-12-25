@@ -3,10 +3,13 @@
 $con=mysqli_connect('localhost','root','','Mystore');
 if($con){
     echo"connection successful";
+    
 }
 
 
 function getproducts(){
+  if(!isset($_GET['categorie'])){
+    if(!isset($_GET['brand'])){
     global $con;
 $select_query="select * from product order by rand()";
 $result_query=mysqli_query($con,$select_query);
@@ -32,7 +35,38 @@ echo " <div class='col-md-4 mb-2'>
 </div>
   </div>";
 
-}}
+}} }}
+
+function get_unique_categories(){
+ 
+    global $con;
+     if(isset($_GET['categorie'])){
+       $categorie_id=$_GET['categorie'];
+$select_query="select * from product where categorie_id=$categorie_id";
+$result_query=mysqli_query($con,$select_query);
+// $row=mysqli_fetch_assoc($result_query);
+// echo $row['product_title'];
+while($row=mysqli_fetch_assoc($result_query)){
+$product_id=$row['product_id'];
+$product_tite=$row['product_title'];
+$product_description=$row['product_description'];
+$product_image1=$row['product_image1'];
+$product_price=$row['product_price'];
+$categorie_id=$row['categorie_id'];
+$brand_id=$row['brand_id'];
+echo " <div class='col-md-4 mb-2'>
+<div class='card'>
+      <img src='./product_image/$product_image1' class='card-img-top' alt='$product_tite'>
+      <div class='card-body'>
+        <h5 class='card-title'>$product_tite</h5>
+        <p class='card-text'>$product_description.</p>
+        <a href='#' class='btn btn-info'>add to card</a>
+        <a href='#' class='btn btn-secondary'>view more</a>
+      </div>
+</div>
+  </div>";
+
+}} }
 function getbrands(){
     global $con;
     $select_brands="select * from `brands`";

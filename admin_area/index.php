@@ -21,6 +21,7 @@ if(!isset($_SESSION['var'])){
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"rel="stylesheet">
     <link rel="stylesheet" href="../css/all.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
     <style>
@@ -29,7 +30,7 @@ if(!isset($_SESSION['var'])){
     object-fit: contain;
 }
 .product_img{
-    width: 20%;
+    width: 100px;
     object-fit:contain;
 }
     </style>
@@ -88,6 +89,9 @@ if(!isset($_SESSION['var'])){
         }
         if(isset($_GET['view_products'])){
             include('view_products.php');
+        }
+        if(isset($_GET['edit_products'])){
+            include('edit_products.php');
         }
 ?>
       </div>
