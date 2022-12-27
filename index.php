@@ -1,6 +1,7 @@
   <?php
 include('./include/connect.php');
 include('./functions/common_function.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@ include('./functions/common_function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="boostrap/css/all.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
    
     <link rel="stylesheet" href="css/style.css">
 
@@ -47,7 +48,7 @@ include('./functions/common_function.php');
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"name="search">
                   <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
               </div>

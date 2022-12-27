@@ -8,6 +8,8 @@ if(!isset($_SESSION['var'])){
     if(isset($_POST['logout'])){
             unset($_SESSION['var']);
         }
+
+
    
 
 ?>
@@ -47,6 +49,10 @@ if(!isset($_SESSION['var'])){
                         <a href=""class="nav-link">welome guest</a>
                     </li>
                   </ul>
+                  <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"name="search">
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
 </nav>
           </div>
       </nav>
@@ -98,5 +104,8 @@ if(!isset($_SESSION['var'])){
   </div>
 
 <script src="bootstrap/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+
 </body>
 </html>

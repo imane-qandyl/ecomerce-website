@@ -5,7 +5,33 @@ if(isset($_GET['d'])){
     $veref=mysqli_query($con,$delete);
     echo"suprrimer";
 }
+$req="select * from product";
+if(isset($_REQUEST["search"])){
+  $req.=" WHERE title like ('% ".$_REQUEST["search"]."%') OR description like ('%".$_REQUEST["search"]."%')";
+}
+if(!isset($_REQUEST['search'])){
+    $_REQUEST['search']="";
+}
+if(isset($_GET['p'])){
+    $nump=$_GET['p'];
+}
+else{
+    $nump=1;
+}
+$con=mysqli_connect('localhost','root','','Mystore');
+$res=mysqli_query($con,$req);
+if(mysqli_num_rows($res)){
+  $rowspage=10;
+  $total=mysqli_num_rows($res);
+  $nbp=ceil($total/$rowspage);
+  $from=(($nump-1)*$rowspage)+1;
+  $req.="limit $from,$rowspage";
+  $res=mysqli_query($con,$req);
+
+
+
 ?>
+
    <h3 class="text-center text-success">view products</h3>
     <table class="table table-bordered-mt-5">
         <thead class="bg-info">
@@ -44,9 +70,31 @@ $number++;
 <td><a href="index.php?view_products=1&d=1&id=<?=$row['product_id']?>"class='text-light'><i class='fa-solid fa-trash'></i></a></td>
 </tr>
 <?php
-}
+}}
+
             ?>
           
 
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item"><a class="page-link" href="#">6</a></li>
+    <li class="page-item"><a class="page-link" href="#">7</a></li>
+    <li class="page-item"><a class="page-link" href="#">8</a></li>
+    <li class="page-item"><a class="page-link" href="#">9</a></li>
+    <li class="page-item"><a class="page-link" href="#">10</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+    <?php
+for($p=1;$p<$nbp;$p++){
+   ?> <li class="page-item"><a class="page-link" href="view_products.php?p=<?=$p?>&search=<?=$_REQUEST["search"]?>"><?=$p?></a></li>
+<?php }?>
+</ul>
+</nav>
+    
