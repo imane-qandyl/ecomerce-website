@@ -5,7 +5,9 @@ if(isset($_GET['d'])){
     $veref=mysqli_query($con,$delete);
     echo"suprrimer";
 }
-$req="select * from product";
+$con=mysqli_connect('localhost','root','','Mystore');
+$req="select * from product ";
+$result=mysqli_query($con,$req);
 if(isset($_REQUEST["search"])){
   $req.=" WHERE title like ('% ".$_REQUEST["search"]."%') OR description like ('%".$_REQUEST["search"]."%')";
 }
@@ -14,19 +16,17 @@ if(!isset($_REQUEST['search'])){
 }
 if(isset($_GET['p'])){
     $nump=$_GET['p'];
+   
 }
 else{
     $nump=1;
 }
-$con=mysqli_connect('localhost','root','','Mystore');
-$res=mysqli_query($con,$req);
-if(mysqli_num_rows($res)){
-  $rowspage=10;
-  $total=mysqli_num_rows($res);
-  $nbp=ceil($total/$rowspage);
-  $from=(($nump-1)*$rowspage)+1;
-  $req.="limit $from,$rowspage";
-  $res=mysqli_query($con,$req);
+
+if(mysqli_num_rows($result)){
+$numberPages=5;
+$num=mysqli_num_rows($result);
+$totalPages=ceil($num/$numberPages);
+}
 
 
 
@@ -40,7 +40,7 @@ if(mysqli_num_rows($res)){
                 <th>product title</th>
                 <th>product image</th>
                 <th>product price</th>
-                <th>total sold</th>
+                <!-- <th>total sold</th> -->
                 <th>status</th>
                 <th>edit</th>
                 <th>delete</th>
@@ -48,12 +48,13 @@ if(mysqli_num_rows($res)){
         </thead>
         <tbody class="bg-secondary text-light">
             <?php
-$get_products="select * from product";
-$result=mysqli_query($con,$get_products);
+$from=($nump-1)*$numberPages;
+$req="select * from product LIMIT ".$from.','.$numberPages;
 $number=0;
+$result=mysqli_query($con,$req);
 while($row=mysqli_fetch_assoc($result)){
-    $product_id=$row['product_id'];
-    $product_title=$row['product_title'];
+$product_id=$row['product_id'];
+$product_title=$row['product_title'];
 $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $status=$row['status'];
@@ -64,13 +65,13 @@ $number++;
 <td> <?=$product_title?></td>
 <td><img src='../product_image/<?=$product_image1?>' class='product_img'></td>
 <td><?=$product_price?></td>
-<td>0</td>
+<!-- <td>0</td> -->
 <td><?=$status?></td>
 <td><a href="index.php?edit_products=<?=$product_id?>" class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
 <td><a href="index.php?view_products=1&d=1&id=<?=$row['product_id']?>"class='text-light'><i class='fa-solid fa-trash'></i></a></td>
 </tr>
 <?php
-}}
+}
 
             ?>
           
@@ -92,8 +93,8 @@ $number++;
     <li class="page-item"><a class="page-link" href="#">10</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
     <?php
-for($p=1;$p<$nbp;$p++){
-   ?> <li class="page-item"><a class="page-link" href="view_products.php?p=<?=$p?>&search=<?=$_REQUEST["search"]?>"><?=$p?></a></li>
+for($p=1;$p<$totalPages;$p++){
+   ?> <li class="page-item"><a class="page-link" href="index.php?view_products&p=<?=$p?>&search=<?=$_REQUEST["search"]?>"><?=$p?></a></li>
 <?php }?>
 </ul>
 </nav>
