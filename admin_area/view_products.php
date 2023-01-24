@@ -67,8 +67,8 @@ $number++;
 <td><?=$product_price?></td>
 <!-- <td>0</td> -->
 <td><?=$status?></td>
-<td><a href="index.php?edit_products=<?=$product_id?>" class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
-<td><a href="index.php?view_products=1&d=1&id=<?=$row['product_id']?>"class='text-light'><i class='fa-solid fa-trash'></i></a></td>
+<td><a href="index.php?edit_products=<?=$product_id?>" class='text-light'>edit<i class='fa-solid fa-pen-to-square'></i></a></td>
+<td><a href="index.php?view_products=1&d=1&id=<?=$row['product_id']?>"class='text-light'>delete<i class='fa-solid fa-trash'></i></a></td>
 </tr>
 <?php
 }
@@ -98,4 +98,5 @@ for($p=1;$p<$totalPages;$p++){
 <?php }?>
 </ul>
 </nav>
+<a class="pdf" href="export.php">exporter</a>
     
